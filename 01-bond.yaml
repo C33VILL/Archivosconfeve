@@ -3,10 +3,6 @@ network:
   renderer: networkd
 
   ethernets:
-    ens3:
-      dhcp4: false
-      dhcp6: false
-      link-local: []
     ens4:
       dhcp4: false
       dhcp6: false
@@ -15,13 +11,17 @@ network:
       dhcp4: false
       dhcp6: false
       link-local: []
+    ens6:
+      dhcp4: false
+      dhcp6: false
+      link-local: []
 
   bonds:
     bond0:
       interfaces:
-        - ens3
         - ens4
         - ens5
+        - ens6
       addresses:
         - 192.168.10.10/24
       routes:
@@ -33,5 +33,5 @@ network:
           - 8.8.8.8
       parameters:
         mode: active-backup
-        primary: ens3
+        primary: ens4
         mii-monitor-interval: 100
