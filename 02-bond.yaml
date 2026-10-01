@@ -1,0 +1,25 @@
+# ============================ SERVER-2 ====================================
+# /etc/netplan/01-fabric.yaml
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    ens3:
+      addresses: [172.16.10.12/24]
+      routes:
+        - to: default
+          via: 172.16.10.1
+          metric: 100
+    ens4:
+      addresses: [172.16.20.12/24]
+      routes:
+        - to: default
+          via: 172.16.20.1
+          metric: 200
+    ens5:
+      addresses: [172.16.30.12/24]
+      routes:
+        - to: default
+          via: 172.16.30.1
+          metric: 300
+ 
