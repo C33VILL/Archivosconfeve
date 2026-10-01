@@ -1,37 +1,25 @@
+# ============================ SERVER-1 ====================================
+# /etc/netplan/01-fabric.yaml
 network:
   version: 2
   renderer: networkd
-
   ethernets:
-    ens4:
-      dhcp4: false
-      dhcp6: false
-      link-local: []
-    ens5:
-      dhcp4: false
-      dhcp6: false
-      link-local: []
-    ens6:
-      dhcp4: false
-      dhcp6: false
-      link-local: []
-
-  bonds:
-    bond0:
-      interfaces:
-        - ens4
-        - ens5
-        - ens6
-      addresses:
-        - 192.168.10.10/24
+    ens3:
+      addresses: [172.16.10.11/24]
       routes:
         - to: default
-          via: 192.168.10.1
-      nameservers:
-        addresses:
-          - 1.1.1.1
-          - 8.8.8.8
-      parameters:
-        mode: active-backup
-        primary: ens4
-        mii-monitor-interval: 100
+          via: 172.16.10.1
+          metric: 100
+    ens4:
+      addresses: [172.16.20.11/24]
+      routes:
+        - to: default
+          via: 172.16.20.1
+          metric: 200
+    ens5:
+      addresses: [172.16.30.11/24]
+      routes:
+        - to: default
+          via: 172.16.30.1
+          metric: 300
+ 
